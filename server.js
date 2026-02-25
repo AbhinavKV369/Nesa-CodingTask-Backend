@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(cors({
-  origin: "https://https://nesa-todo.vercel.app", 
+  origin: "https://https://nesa-todo-task.vercel.app", 
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 app.use(express.json());
