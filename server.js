@@ -11,7 +11,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://https://nesa-todo.vercel.app", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 app.use(express.json());
 
 app.use("/api/todos",todoRoutes)
