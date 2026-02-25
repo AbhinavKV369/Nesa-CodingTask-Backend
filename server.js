@@ -1,3 +1,27 @@
-import express from "express";
+import dotenv from "dotenv";
+import express, { urlencoded } from "express";
 
-const app = ex
+import connectDb from "./config/db.js";
+import errorHandler from "./middlewares/error.middleware.js";
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT;
+
+app.use(cors());
+app.use(express.json({urlencoded:true}));
+
+app.use(errorHandler());
+
+const startServer = async()=>{
+    try {
+      await connectDb();
+      app.listen(PORT,()=>{
+        console.log("Server Connected at PORT ",PORT);
+      })  
+    } catch (error) {
+         console.error("Failed to start server:", error.message);
+    }
+}
+startServer();
